@@ -1,37 +1,55 @@
 import { Injectable } from '@angular/core';
-import { Preferences } from '@capacitor/preferences'; // 1. Import Preferences
+import { Preferences } from '@capacitor/preferences';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataMahasiswaService {
 
-  // Kunci penyimpanan (ibarat nama laci)
   private KEY_MAHASISWA = 'data_mahasiswa_app';
 
   constructor() { }
 
-  // FUNGSI 1: Membaca Data
+  // 1. Ambil Data
   async getData() {
-    // Ambil data mentah dari penyimpanan
     const { value } = await Preferences.get({ key: this.KEY_MAHASISWA });
-
-    // Jika ada datanya, kembalikan dalam bentuk Objek (JSON Parse)
-    // Jika kosong, kembalikan array kosong []
     return value ? JSON.parse(value) : [];
   }
 
-  // FUNGSI 2: Menambah Data Baru
+  // 2. Tambah Data
   async tambahData(mahasiswaBaru: any) {
-    // 1. Ambil data lama dulu
     const dataLama = await this.getData();
-
-    // 2. Tambahkan data baru ke array data lama
-    // (Beri ID otomatis berdasarkan timestamp agar unik)
     mahasiswaBaru.id = Date.now();
     dataLama.push(mahasiswaBaru);
+    return await Preferences.set({
+      key: this.KEY_MAHASISWA,
+      value: JSON.stringify(dataLama)
+    });
+  }
 
-    // 3. Simpan kembali ke Preferences dalam bentuk String (JSON Stringify)
+  // 3. Hapus Data
+  async hapusData(id: number) {
+    const dataLama = await this.getData();
+    const dataBaru = dataLama.filter((mhs: any) => mhs.id !== id);
+    return await Preferences.set({
+      key: this.KEY_MAHASISWA,
+      value: JSON.stringify(dataBaru)
+    });
+  }
+
+  // 4. Update Data (FITUR BARU)
+  async updateData(mahasiswaEdit: any) {
+    const dataLama = await this.getData();
+    
+    // Cari index data berdasarkan ID
+    const index = dataLama.findIndex((m: any) => m.id === mahasiswaEdit.id);
+    
+    // Jika ketemu, update datanya
+    if (index !== -1) {
+      dataLama[index] = mahasiswaEdit;
+    }
+
+    // Simpan kembali
     return await Preferences.set({
       key: this.KEY_MAHASISWA,
       value: JSON.stringify(dataLama)

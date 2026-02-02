@@ -1,28 +1,49 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
-    <ion-title>
-      Data Mahasiswa
-    </ion-title>
-
-    <!-- Tombol biasa di Header -->
+    <ion-title>Data Mahasiswa</ion-title>
     <ion-buttons slot="end">
       <ion-button routerLink="/tambah-mhs">Tambah Mahasiswa</ion-button>
     </ion-buttons>
-
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let mhs of dataMahasiswa" [routerLink]="['/detail', mhs.id]" detail="true">
+    
+    <ion-item 
+      *ngFor="let mhs of dataMahasiswa" 
+      button="true" 
+      detail="true"
+      (click)="bukaDetail(mhs.id)">
+      
       <ion-label>
-        <h2>{{ mhs.nama }}</h2>
+        <h2><b>{{ mhs.nama }}</b></h2>
+        
+        <p>NIM: {{ mhs.nim || '-' }}</p>
+        
         <p>Prodi: {{ mhs.jurusan }}</p>
       </ion-label>
+
+      <ion-button 
+        slot="end" 
+        fill="clear" 
+        color="primary" 
+        (click)="editData($event, mhs)">
+        <ion-icon slot="icon-only" name="create"></ion-icon>
+      </ion-button>
+
+      <ion-button 
+        slot="end" 
+        fill="clear" 
+        color="danger" 
+        (click)="konfirmasiHapus($event, mhs.id)">
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+      </ion-button>
+
     </ion-item>
+
   </ion-list>
 
-  <!-- menambahkan button tambah melayang -->
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
     <ion-fab-button routerLink="/tambah-mhs">
       <ion-icon name="add"></ion-icon>
