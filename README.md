@@ -16,15 +16,21 @@ Aplikasi ini telah dikembangkan dengan fitur lengkap **CRUD (Create, Read, Updat
 
 ---
 
-## 📱 Preview Aplikasi
+## 📸 Preview Aplikasi
 
-Berikut adalah dokumentasi fitur yang telah selesai dikerjakan:
+Berikut adalah dokumentasi fitur yang telah selesai dikerjakan, baik dalam tampilan Mobile maupun Web.
 
-| 1. Halaman Utama (Homepage) | 2. Fitur Edit (Update) | 3. Fitur Hapus (Delete) |
+### A. Tampilan Mobile
+| 1. Halaman Utama | 2. Fitur Edit (Modal) | 3. Fitur Hapus (Alert) |
 | :---: | :---: | :---: |
-| ![Homepage](screenshots/homepage-view.png)<br>*(Menampilkan list data & NIM)* | ![Edit Modal](screenshots/edit-modal-view.png)<br>*(Modal Edit dengan Select Option)* | ![Delete Alert](screenshots/delete-alert-view.png)<br>*(Alert Konfirmasi Hapus)* |
+| ![Mobile Home](screenshots/homepage-view.png) | ![Mobile Edit](screenshots/edit-modal-view.png) | ![Mobile Delete](screenshots/delete-alert-view.png) |
 
-*(Catatan: Screenshot tersimpan di folder `screenshots/`)*
+### B. Tampilan Web (Desktop)
+| 1. Halaman Utama | 2. Fitur Edit (Modal) | 3. Fitur Hapus (Alert) |
+| :---: | :---: | :---: |
+| ![Web Home](screenshots/web-homepage.png) | ![Web Edit](screenshots/web-edit-modal.png) | ![Web Delete](screenshots/web-delete-alert.png) |
+
+*(Semua screenshot tersimpan di folder `screenshots/`)*
 
 ---
 
@@ -40,7 +46,7 @@ Berikut adalah dokumentasi fitur yang telah selesai dikerjakan:
     * Input Nama (Min 5 huruf), NIM (Angka), dan Jurusan.
 
 3.  **Update (Edit Data) - *New Fitur***
-    * Menggunakan **Modal Component** (`edit-modal`) dengan tampilan *Inset List*.
+    * Menggunakan **Modal Component** (`edit-modal`) dengan tampilan *Inset List* yang rapi.
     * Form terisi otomatis (*pre-filled*) dengan data lama.
     * Validasi input tetap berjalan saat edit.
     * Input Jurusan menggunakan Dropdown (`ion-select`).
