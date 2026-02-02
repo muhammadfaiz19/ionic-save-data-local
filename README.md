@@ -64,7 +64,7 @@ Jika Anda meng-clone repository ini, lakukan langkah berikut untuk menjalankanny
 
 1.  **Clone Repository**
     ```bash
-    git clone [https://github.com/oci-cmd/ionic-save-data-local.git](https://github.com/oci-cmd/ionic-save-data-local.git)
+    git clone https://github.com/muhammadfaiz19/ionic-save-data-local.git
     ```
 
 2.  **Masuk ke Folder**
